@@ -7,7 +7,7 @@ bibliography: dikopa2025.bib
 ---
 <!-- TODO: die Hochkommas mit regex austauschen --> 
 
-^[Dieser Beitrag ist gezielt in lockerem und "unwissenschaftlichen" Tonfall gehalten, da es sich eher um eine Best-Practice - Anleitung ohne wissenschaftlichen Ansatz handelt.]
+^[Dieser Beitrag ist gezielt in lockerem Tonfall gehalten, da es sich um eine Best-Practice - Anleitung ohne wissenschaftlichen Anspruch handelt.]
 
 ## Einleitung
 
