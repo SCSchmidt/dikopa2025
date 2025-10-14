@@ -1,0 +1,132 @@
+---
+title: "Den Überblick behalten - Organisation von Daten, Analysecode und Text in Paketen"
+author: "Sophie C. Schmidt"
+format: docx
+csl: deutsches-archaologisches-institut.csl
+bibliography: dikopa2025.bib
+---
+<!-- TODO: die Hochkommas mit regex austauschen --> 
+
+^[Dieser Beitrag ist gezielt in lockerem und "unwissenschaftlichen" Tonfall gehalten, da es sich eher um eine Best-Practice - Anleitung ohne wissenschaftlichen Ansatz handelt.]
+
+## Einleitung
+
+Forschung ist ein langwieriger, iterativer Prozess, in dem wir mit unterschiedlichen Datentypen, Zwischenergebnissen, Textbausteinen, Code-Schnipseln, Grafiken und Quellen hantieren müssen, ohne den Überblick zu verlieren. Aus diesen Einzelteilen schmieden wir Narrative, die in der Regel als Artikel oder Bücher veröffentlicht werden. Dabei ist die Offenlegung dieses wirren Prozesses mit der zunehmenden Quantifizierung und der Einbindung komplexerer computergestützter Methoden eher schwieriger geworden. Während die Forschenden in den 1960er und 70ern häufig noch rein visuell arbeiteten, ergo zum Nachvollziehen der Ergebnisbildung v. a. ein Katalog notwendig war, setzte in den 1970ern eine bis heute andauernde wissenschaftstheoretische Phase ein, die computergestützte Datenverarbeitung und statistische Methoden als modern und wissenschaftlich ansieht. Das soll hier nicht kritisiert werden. Jedoch kommen mit der zunehmenden Digitalisierung ganz neue Probleme auf uns zu, denen sich viele zu wenig bewusst sind.
+
+Eines dieser Probleme ist vom Prinzip nur „den Überblick zu behalten“. Dieser Überblick sollte nicht nur während des Schreibprozesses des einen Artikels behalten werden, sondern wenn möglich auch noch in 3 Jahren herstellbar sein. Es gilt, möglichst reproduzierbar zu arbeiten, d. h., die Informationen so vorzuhalten, dass Zukunfts-Ich und andere Menschen mit den gleichen Daten und Methoden zum gleichen Ergebnis kommen (siehe @fig-rep ^[<https://book.the-turing-way.org/reproducible-research/overview/overview-definitions/> (zuletzt abgerufen 14.10.2015)]). Wenn Analysen reproduzierbar zur Verfügung stehen, sind die Wege zur Replizierbarkeit auch erleichtert – da die Methodik auf eine Art und Weise zur Verfügung gestellt wird, dass sie genau so mit anderen Daten nachvollzogen werden kann.
+
+![Definitionen des Projekts „Turing Way“ für Reproduzierbarkeit, Replizierbarkeit](./bilder/reproducible-matrix.jpg){width=80% #fig-rep}
+
+
+Stellen wir die Daten so bereit, dass andere Forscher\*innen mit anderen Methoden bearbeiten können, können unsere Analysen robust werden und durch neue Ausgrabungen oder Datenerhebungen bestätigt werden. Neben der Nützlichkeit solch eines Vorgehens allgemein, können Fehlerquellen bei der Übernahme fremder Daten ausgemerzt werden, neue Methoden schneller Verbreitung finden und auch besser von Kolleg\*innen überprüft werden. Damit führen Praktiken der offenen Wissenschaft zu einer Verschnellerung und Verbesserung von wissenschaftlichem Fortschritt [@touchon_2016; @schmidt_2020].
+
+Ein Lösungsansatz für das Problem der Bereitstellung von Analysecode und Daten basiert auf dem Prinzip des "ausführbaren Dokuments".
+
+## Das ausführbare Dokument
+
+"Ausführbar" heißen diese Dokumente, da sie vom Prinzip wie ein kleines Programm/ein Skript agieren, nur dass dabei ein Artikel entsteht, der Text, Bilder und Bibliographie enthält. Man hält damit den Text, sowie den Code, den man für die Erstellung der Bilder braucht zusammen in einem Dokument vor.
+
+Die Grundlage für diese ausführbaren Dokumente, auf die im Folgenden eingegangen werden sollen, sind
+
+1. Markdown
+2. Quarto
+3. Code-Blöcke
+4. der Umwandlungsprozess
+5. Pakete .
+
+Diese werden erst im Prinzip vorgestellt und im Anschluss ein R-Paket beschrieben, dass die Erstellung dieser Dokumente und Pakete erleichtert.
+
+### Markdown
+
+Markdown (md abkgekürzt und als Dateiendung) ist die Grundlage für den Textteil des Dokuments. Es handelt sich um eine Auszeichnungssprache, die von John Gruber 2004 entwickelt wurde: In dem ich in einer simplen Textdatei einer bestimmten Syntax folge, kann ich die Datei von einem Programm im Hintergrund in hübsch formatierte Word-, html- oder PDF-Dateien umwandeln.
+
+![Beispiel für die Syntax von Markdown in einem Quarto-Dokument](./bilder/Screenshot_qmd-docx.png){#fig-screenshot}
+
+ Zum Beispiel lassen sich Überschriften mit dem Rautensymbol markieren (hierarchisch gestaffelt - eine Raute # ist die höchste Ebene, ## zeichnet die Ebene darunter aus, ### die dritte Ebene), Listen mit einem einfach Minus-Symbol und Text über Sternchensymbole *kursiv* und **fett** drucken (siehe @fig-screenshot). Fußnoten, Bilder, Links, Rückverweise auf Überschriften genauso wie auf Bilder und Literaturverweise lassen sich ebenso einbinden. Damit entstehen Dokumente, die menschen- und maschinenlesbar sind.  
+
+Es gibt noch einen Vorteil: Das Versionskontrollsystem Git^[Siehe Maria Shinoto in diesem Band.] arbeitet in einem Markdown-basiertem Dokument zeilenbasiert, in einem Word-Dokument jedoch nur auf Ebene des gesamten Dokuments. Markdown-Dateien lassen sich damit kleinteiliger versionieren als word-Dokumente und Veränderungen zwischen Versionen sind leichter zu erfassen. 
+
+Markdown kommt in unterschiedlichen Kontexten vor und damit in leicht unterschiedlichen „Geschmacksrichtungen“, die die Markdown – Syntax etwas erweitern oder abwandeln. Für das Schreiben wissenschaftlicher Dokumente hat sich inzwischen Quarto eingebürgert. 
+
+### Quarto
+
+Die Abkürzung und Endung eines Quarto-Dokuments ist qmd. Das Qmd-Dokument benötigt eine gewisse Struktur, die der umwandelnden Software ein paar Anweisungen gibt. Ganz oben steht ein sogenannter „YAML-Header“. Er beginnt und endet mit 3 Minuszeichen in einer eigenen Zeile. Die Struktur in dem YAML-Header kann leicht anders aussehen, je nachdem welchen Konvertierungssoftware man benutzt, hier ist es für Quarto dargelegt. In dem Header werden Anweisungen und Metadaten zu dem Dokument abgelegt (siehe Abb. 2): 
+
+ - Der Titel wird hinter `title:` in Hochkommas geschrieben   
+ - und mit `format:` wird spezifiziert, in was für eine Art Dokument das qmd-Dokument verwandelt werden soll. Es gibt „html“, „docx“ oder „pdf“ und tatsächlich noch einige andere Versionen, deren Erläuterung hier zuweit führen würde. In dem Beispiel hier wird auf eine docx-Datei als Vorlage („template“) verwiesen: Diese Textdatei bestimmt das „Design“, in das die markdown-Datei konvertiert wird. 
+ - Die Literaturverwaltung läuft über `bibliography` (hier wird auf eine bib-Datei, also die Datenbank) verwiesen. 
+ - Die `csl` – *citation style language* – Datei definiert die Formatierung der Bibliographie (sowohl im Text als auch für das Literaturverzeichnis). CSL-Dateien werden inzwischen für viele unterschiedliche Vorgaben zur Verfügung gestellt. Sie lassen sich im Style - Repositorium von Zotero finden^[Siehe <https://www.zotero.org/styles> (abgerufen 14.10.2015).]
+
+Der Clou bei dieser Art des ausführbaren Dokuments liegt aber nicht nur darin, einen schönen Text zu formatieren, sondern v. a. darin, dass man seine Analyse innerhalb des gleichen Dokuments ablegen kann.
+
+### Code-Blöcke („Code Chunks“)
+
+Durch das Markieren von Bereichen mit drei Hochkommas am Anfang und am Ende entsteht ein „Code Chunk“ oder Code-Block: In den geschweiften Klammern gibt man an, in welcher Programmiersprache der Code geschrieben ist und dann lässt sich dort z. B. ein Grafik erstellen oder ein Wert berechnen.
+
+Die Grafik kann eine Bildunterschrift erhalten und ein label, welches genutzt werden kann, um auf diese Grafik zu verweisen. Der Wert lässt sich als Variable im Text aufrufen.
+
+Der Vorteil liegt auf der Hand: Sollte sich etwas in meiner Datenbasis oder der Analyse verändern, kann ich die berechneten Werte und Grafiken innerhalb meines Textes automatisch anpassen lassen. Auch dies reduziert eine Fehlerquelle. Zudem ist dies genau der Teil, der Kolleg\*innen eventuell besonders interessiert: Wie genau die Analyse berechnet wurde kann mithilfe dieses Dokuments geteilt werden und benötigt weniger erklärende Worte als eine Analyse ohne publizierten Code. 
+
+In dem Beispiel hier ist die Datei vom Anfang in eine PDF verwandelt worden. TODO check
+
+### Umwandlungsprozess der qmd-Datei
+
+![Umwandlungsprozess der QMD in das gewünschte Dokument, Abbildung von Allison Horst für Rstudio](./bilder/AllisonHorst_qmd_quarto_output.png){#fig-pandoc} 
+
+Damit entsteht dieses Dokument „auf Knopdruck“ (siehe @fig-pandoc^[Illustration von Allison Horst, für Rstudio, zu finden auf <https://allisonhorst.com/> (abgerufen 14.10.2025).]: Als ersten Schritt werden die Code-Blöcke ausgeführt und die qmd – Datei mithilfe von jupyter (bei Python) oder knitr (bei R) in eine Markdown-Datei umgewandelt – dabei enstehen schon alle Grafiken, die jetzt in der md-Datei nur noch als Bilder eingebunden werden. Diese Markdown-Datei wird dann mithilfe von pandoc in das gewünschte Format transformiert, also PDF, word docx, html, oder ein anderes.
+
+Der Gestaltungsfreiraum ist sehr groß. Es lassen sich im YAML-header diverse Variablen setzen, für Bilder z. B. wo sie abgelegt oder mit wie viel DPI sie gespeichert werden. Mit einem übergeordneten Dokument lassen sich mehrere Kapitel als einzelne qmd-Dateien zusammenfassen und so ganze Bücher auf diese Weise schreiben. Über eine Schleife lassen sich auch unterschiedlich parametrisierte Ausgaben berechnen, d. h. aus einem qmd-Dokument werden mehrere PDFs, in denen zB die zugrundeliegenden Datensätze anders gefiltert wurden.
+
+Um auf die Reproduzierbarkeit zurückzukommen: Jeder, der dieses qmd-Dokument und nicht nur das fertig umgewandelte Dokument bekommt, sieht genau, welche Berechnungen genutzt wurden, um auf den besprochenen Wert zu kommen oder eine Grafik zu erstellen. Mithilfe der zugrundeliegenden Daten und dieses Dokuments sollte er\*sie in der Lage sein, genau die gleichen Ergebnisse zu erzielen.
+
+Apropos Daten: Diese sind bisher noch nicht besprochen worden. Um die Daten gemeinsam mit dem qmd-Dokument abzulegen, lohnt es sich ein Paket zu erstellen.
+
+### Pakete schnüren
+
+Ein Paket ist letztendlich ein Ordner mit Unterordnern für Rohdaten und bearbeiteten Dateien, Abbildungen, Grafiken und den zusätzlichen Dateien, die für die Umwandlung der qmd notwendig sind, wie die csl- und bib-Datei^[Siehe Beitrag Dirk Seidensticker in diesem Band.].
+
+Wenn ich innerhalb der qmd dann nur relative Pfade verwende, d. h. Pfade, die den Weg von der qmd-Datei zu der gewünschten Datei beschreiben und nicht von der Partition “home” oder “C” aus, dann ist mit der Übergabe des Pakets an jemand anderes oder den neuen Computer meines Zukunfts-Ich alles an einem Platz, um die Analyse erfolgreich nachzuholen.
+
+Um diesen Prozess für R-Nutzer zu vereinfachen und zu automatisieren, haben Ben Marwick et al. das rrtools-Paket^[*rr* für *reproducible research*, <https://github.com/benmarwick/rrtools>.] entwickelt [@schmidt_2020], dass den Nutzer mit vier zentralen Funktionen durch die Entwicklung eines Pakets für reproduzierbare Analysen führt. Ein R-Paket ist letztendlich eine kleine Erweiterung der grundlegenden Funktionalitäten der Skriptsprache R (`base - r`). Es gibt sehr viele diese Erweiterungen, die über das *Comprehensive R Archive Network* (CRAN^[<https://cran.r-project.org/> (abgerufen 14.10.2025).]) oder häufig auch Github bereitsgestellt werden. Diese Pakete sind immer in einer bestimmten Art und Weise aufgebaut, um problemlos von anderen Nutzer\*innen installiert werden zu können.
+
+## Das R-Paket rrtools
+
+In dem die Funktionen in rrtools, die im Folgenden erklärt werden, den Vorgaben für die Entwicklung von R-Paketen folgen, ist das entstehende Paket bei anderen Nutzern installierbar. Damit können sie die für das Paket entwickelten Funktionen nutzen und das Abhängigkeitsmanagement sollte geklärt sein. Abhängigkeitsmanagement bedeutet, dass, wenn in einem Paket auf andere Erweiterungen (Pakete) zurückgegriffen wird, diese deklariert und ebenfalls installiert werden müssen.
+
+rrtools bietet auch das automatische Erstellen von einer MIT-Lizenz an, das Verknüpfen mit Github ist vorgesehen und führt den Nutzer durch die Erstellung von einer Docker und renv-Umgebung. Darauf wird hier nicht im Detail eingegangen, es dient dem Abspeichern der jeweils genutzten Paketversion von importierten Paketen, damit der Code auch nach Updates noch läuft.
+
+Kurz die Funktionsweise erklärt:
+
+### Erstellung Paket
+
+Mit der grundlegenden Funktion “use_compendium” legt man ein Paket an. Rstudio öffnet ein neues Fenster, in dem erklärt wird, was diese funktion gerade geleistet hat: Es hat Dokumente erstellt, wie das DESCRIPTION file, das das Paket definiert, einen NAMESPACE, die Rproj-Datei etc pp und als letztes erklärt es dann
+
+“Next, you need to do” und führt einen damit durch die Funktionsweise der einzelnen Dateien und notwendigen Schritte.
+
+### Readme-Erstellung
+
+Unter anderem stand da “use_readme_qmd”, mit dem eine README und andere Dateien als templates erstellt werden, die man dann noch modifizieren soll. Eine README ist bei Github die erste Datei die angezeigt wird und einfach allgemein über das informiert, was in diesem Ordner eigentlihc passiert.
+
+### Ordnerstruktur
+
+Die Kernfunktion, die die Ordnerstruktur aufbaut, ist “use_analysis” -\> hiermit werden die Ordner und Vorlagen angelegt, die für eine Projekt genutzt werden können. Wieder mit Hinweisen, was als nächstes getan werden sollte und dem Warnhinweis, dass die daten automatisch mit git getrackt würden. Wenn man also nicht möchte, dass Daten mit in Github landen, müsste der data-Ordner zum gitignore hinzugefügt werden.
+
+### Lizenzieren!
+
+Die letzte Funktion, die ich hier noch erwähnen möchte, ist die use_mit_licence -\> Wenn Material online geteilt wird, ist die Lizenzierung wichtig, die klärt, wie die Sachen zitiert werden müssen, aber auch, wie sie genutzt werden dürfen. Als Vorlage ist hier die MIT-Lizenz eingestellt, da die einerseits sehr permissiv ist, andererseits keine Haftung für eventuell fehlerhaften Code übernommen wird.
+
+## Zusammenfassung
+
+So entsteht ein Paket, das den Code und Text zusammenhält und alle notwendigen Dateien in einer sinnvollen Struktur ablegt. Die Nutzung von git ermöglicht eine Versionskontrolle, die Anleitung für das Anlegen von Metadaten und der Lizenz sowie dem Abhängigkeitsmanagement ein gut-teilbares Paket, das man anderen so zur Verfügung stellen kann.
+
+Und mir hilft es auch persönlich, den Überblick über das Projekt zu behalten.
+
+
+<!--
+Vorgaben: 
+Umfang: ca. Abbildungen: 3–5 (druckfähige Qualität, mit Bildunterschriften und Rechteklärung) Zitierweise: DAI-Zitierstil (über Zotero verfügbar: Deutsches Archäologisches Institut) Abgabe: 1. Oktober 2025 Einreichung an: [gpantelidis\@klarch.tu-darmstadt.de](mailto:gpantelidis@klarch.tu-darmstadt.de) Formatierungsrichtlinien: Basierend auf den Vereinheitlichungen des ersten Bandes gelten für alle Beiträge folgende Vorgaben: Gendergerechte Sprache: Falls gendergerecht formuliert wird, dann bitte durchgängig mit \* gendern (z. B. Autor\*innen, Forscher\*innen).
+  
+Anführungszeichen: deutschtypisch: „Beispiel“
+
+Kursivierung: Bei Begriffsklärungen, Eigennamen, Softwaretiteln – aber nicht in Überschriften. URLs: ausschließlich in Fußnoten, nicht in den Fließtext oder die Bibliographie. Beispiel: [https://www.nano-editor.org](https://www.nano-editor.org/) \[zugegriffen am 15.01.2025\].
+-->
