@@ -95,25 +95,23 @@ In dem die Funktionen in rrtools, die im Folgenden erklärt werden, den Vorgaben
 
 rrtools bietet auch das automatische Erstellen von einer MIT-Lizenz an, das Verknüpfen mit Github ist vorgesehen und führt den Nutzer durch die Erstellung von einer Docker und renv-Umgebung. Darauf wird hier nicht im Detail eingegangen, es dient dem Abspeichern der jeweils genutzten Paketversion von importierten Paketen, damit der Code auch nach Updates noch läuft.
 
-Kurz die Funktionsweise erklärt:
+Hier wird kurz die Funktionsweise erklärt:
 
 ### Erstellung Paket
 
-Mit der grundlegenden Funktion “use_compendium” legt man ein Paket an. Rstudio öffnet ein neues Fenster, in dem erklärt wird, was diese funktion gerade geleistet hat: Es hat Dokumente erstellt, wie das DESCRIPTION file, das das Paket definiert, einen NAMESPACE, die Rproj-Datei etc pp und als letztes erklärt es dann
-
-“Next, you need to do” und führt einen damit durch die Funktionsweise der einzelnen Dateien und notwendigen Schritte.
+Mit der grundlegenden Funktion `use_compendium` legt man ein Paket an. Rstudio öffnet ein neues Fenster, in dem erklärt wird, was diese Funktion gerade geleistet hat: Es hat Dokumente erstellt, wie die `DESCRIPTION`-Datei, welche das Paket definiert, einen `NAMESPACE`, die `Rproj`-Datei und noch einige mehr. Als letztes erklärt es dann “Next, you need to do” und führt damit durch die Funktionsweise der einzelnen Dateien und notwendigen Schritte.
 
 ### Readme-Erstellung
 
-Unter anderem stand da “use_readme_qmd”, mit dem eine README und andere Dateien als templates erstellt werden, die man dann noch modifizieren soll. Eine README ist bei Github die erste Datei die angezeigt wird und einfach allgemein über das informiert, was in diesem Ordner eigentlihc passiert.
+Unter anderem wird der/die Benutzer\*in aufgeforder mit `use_readme_qmd`, eine README und andere Dateien als Vorlagen zu erstellen, die man dann noch modifizieren soll. Eine README^[*read me* - Die Aufforderung diese Date als erstes zu lesen steckt im Namen.] ist in bei Github und anderen Systemen die erste Datei die angezeigt wird und allgemein darüber informiert, wofür dieser Ordner da ist und welche Dateien sich in ihm finden.
 
 ### Ordnerstruktur
 
-Die Kernfunktion, die die Ordnerstruktur aufbaut, ist “use_analysis” -\> hiermit werden die Ordner und Vorlagen angelegt, die für eine Projekt genutzt werden können. Wieder mit Hinweisen, was als nächstes getan werden sollte und dem Warnhinweis, dass die daten automatisch mit git getrackt würden. Wenn man also nicht möchte, dass Daten mit in Github landen, müsste der data-Ordner zum gitignore hinzugefügt werden.
+Die Kernfunktion, die die Ordnerstruktur aufbaut, ist `use_analysis`. Hiermit werden die Ordner und Vorlagen angelegt, die für ein Projekt genutzt werden können. Auch hier führen Hinweise, was als nächstes getan werden sollte durch das Vorgehen. Es gibt auch einen Warnhinweis, dass die Daten automatisch mit git versioniert würden. Wenn man also nicht möchte, dass Daten auch in Github hochgeladen werden, müsste der data-Ordner zum gitignore hinzugefügt werden. Gitignore ist eine einfache Textdatei, in der aufgelistet wird, welche Dateien in dem durch git versionierten Ordner NICHT mit git verfolgt werden sollen.
 
-### Lizenzieren!
+### Lizenzieren
 
-Die letzte Funktion, die ich hier noch erwähnen möchte, ist die use_mit_licence -\> Wenn Material online geteilt wird, ist die Lizenzierung wichtig, die klärt, wie die Sachen zitiert werden müssen, aber auch, wie sie genutzt werden dürfen. Als Vorlage ist hier die MIT-Lizenz eingestellt, da die einerseits sehr permissiv ist, andererseits keine Haftung für eventuell fehlerhaften Code übernommen wird.
+Die letzte Funktion, die ich hier noch erwähnen möchte, ist `use_mit_licence`. Wenn Material online geteilt wird, ist die Lizenzierung wichtig, die klärt, wie die geteilten Sachen zitiert werden müssen, aber auch, wie sie genutzt werden dürfen. Als Vorlage ist hier die MIT-Lizenz eingestellt, da die einerseits sehr permissiv ist, andererseits keine Haftung für eventuell fehlerhaften Code übernommen wird.
 
 ## Zusammenfassung
 
