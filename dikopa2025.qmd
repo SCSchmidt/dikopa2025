@@ -52,22 +52,22 @@ Markdown kommt in unterschiedlichen Kontexten vor und damit in leicht unterschie
 
 ### Quarto
 
-Die Abkürzung und Endung eines Quarto-Dokuments ist qmd. Das Qmd-Dokument benötigt eine gewisse Struktur, die der umwandelnden Software ein paar Anweisungen gibt. Ganz oben steht ein sogenannter „YAML-Header“. Er beginnt und endet mit 3 Minuszeichen in einer eigenen Zeile. Die Struktur in dem YAML-Header kann leicht anders aussehen, je nachdem welchen Konvertierungssoftware man benutzt, hier ist es für Quarto dargelegt. In dem Header werden Anweisungen und Metadaten zu dem Dokument abgelegt (siehe Abb. 2): 
+Die Abkürzung und Endung eines Quarto-Dokuments ist *qmd*. Das qmd-Dokument benötigt eine gewisse Struktur, die der umwandelnden Software Anweisungen gibt. Das Dokument beginnt mit einem sogenannten „YAML-Header“. Er beginnt und endet mit 3 Minuszeichen in einer eigenen Zeile. Die Struktur in dem YAML-Header kann leicht anders aussehen, je nachdem welchen Konvertierungssoftware man benutzt, hier ist es für Quarto dargelegt. In dem Header werden Anweisungen und Metadaten zu dem Dokument abgelegt (siehe @fig-screenshot): 
 
  - Der Titel wird hinter `title:` in Hochkommas geschrieben   
- - und mit `format:` wird spezifiziert, in was für eine Art Dokument das qmd-Dokument verwandelt werden soll. Es gibt „html“, „docx“ oder „pdf“ und tatsächlich noch einige andere Versionen, deren Erläuterung hier zuweit führen würde. In dem Beispiel hier wird auf eine docx-Datei als Vorlage („template“) verwiesen: Diese Textdatei bestimmt das „Design“, in das die markdown-Datei konvertiert wird. 
+ - und mit `format:` wird spezifiziert, in was für eine Art Dokument das qmd-Dokument verwandelt werden soll. Es gibt „html“, „docx“ oder „pdf“ und tatsächlich noch einige andere Versionen, deren Erläuterung hier zu weit führen würde. In dem Beispiel wird auf eine docx-Datei als Vorlage („template“) verwiesen: Diese Textdatei bestimmt das „Design“, in das die markdown-Datei konvertiert wird. 
  - Die Literaturverwaltung läuft über `bibliography` (hier wird auf eine bib-Datei, also die Datenbank) verwiesen. 
- - Die `csl` – *citation style language* – Datei definiert die Formatierung der Bibliographie (sowohl im Text als auch für das Literaturverzeichnis). CSL-Dateien werden inzwischen für viele unterschiedliche Vorgaben zur Verfügung gestellt. Sie lassen sich im Style - Repositorium von Zotero finden^[Siehe <https://www.zotero.org/styles> (abgerufen 14.10.2015).]
+ - Die *citation style language* (`csl`) – Datei definiert die Formatierung der Bibliographie (sowohl im Text als auch für das Literaturverzeichnis). csl-Dateien werden inzwischen für viele unterschiedliche Vorgaben zur Verfügung gestellt. Sie lassen sich im Style - Repositorium von Zotero finden^[Siehe <https://www.zotero.org/styles> (abgerufen 14.10.2015).]
 
-Der Clou bei dieser Art des ausführbaren Dokuments liegt aber nicht nur darin, einen schönen Text zu formatieren, sondern v. a. darin, dass man seine Analyse innerhalb des gleichen Dokuments ablegen kann.
+Die Nützlichkeit dieser Art des ausführbaren Dokuments liegt aber nicht nur darin, einen Text zu formatieren, sondern v. a. darin, dass die Analyse innerhalb des gleichen Dokuments abgelegt werden kann.
 
 ### Code-Blöcke („Code Chunks“)
 
-Durch das Markieren von Bereichen mit drei Hochkommas am Anfang und am Ende entsteht ein „Code Chunk“ oder Code-Block: In den geschweiften Klammern gibt man an, in welcher Programmiersprache der Code geschrieben ist und dann lässt sich dort z. B. ein Grafik erstellen oder ein Wert berechnen.
+Durch das Markieren von Bereichen mit drei Hochkommas (\`) am Anfang und am Ende entsteht ein „*Code Chunk*“ oder Code-Block: In den geschweiften Klammern wird angegeben, in welcher Programmiersprache der Code geschrieben ist und dann lässt sich damit und dort z. B. ein Grafik erstellen oder ein Wert berechnen.
 
-Die Grafik kann eine Bildunterschrift erhalten und ein label, welches genutzt werden kann, um auf diese Grafik zu verweisen. Der Wert lässt sich als Variable im Text aufrufen.
+Die Grafik kann eine Bildunterschrift erhalten und ein *label*, welches genutzt werden kann, um auf diese Grafik zu verweisen. Der Wert lässt sich als Variable im Text aufrufen.
 
-Der Vorteil liegt auf der Hand: Sollte sich etwas in meiner Datenbasis oder der Analyse verändern, kann ich die berechneten Werte und Grafiken innerhalb meines Textes automatisch anpassen lassen. Auch dies reduziert eine Fehlerquelle. Zudem ist dies genau der Teil, der Kolleg\*innen eventuell besonders interessiert: Wie genau die Analyse berechnet wurde kann mithilfe dieses Dokuments geteilt werden und benötigt weniger erklärende Worte als eine Analyse ohne publizierten Code. 
+Der Vorteil liegt auf der Hand: Sollte sich etwas in der Datenbasis oder der Analyse verändern, können die berechneten Werte und Grafiken innerhalb des Textes automatisch angepasst werden. Auch dies reduziert eine Fehlerquelle. Zudem ist dies genau der Teil, der Kolleg\*innen eventuell besonders interessiert: Wie genau die Analyse berechnet wurde kann mithilfe dieses Dokuments geteilt werden und benötigt weniger erklärende Worte als eine Analyse ohne publizierten Code. 
 
 In dem Beispiel hier ist die Datei vom Anfang in eine PDF verwandelt worden. TODO check
 
