@@ -56,8 +56,8 @@ Die Abkürzung und Endung eines Quarto-Dokuments ist *qmd*. Das qmd-Dokument ben
 
  - Der Titel wird hinter `title:` in Hochkommas geschrieben   
  - und mit `format:` wird spezifiziert, in was für eine Art Dokument das qmd-Dokument verwandelt werden soll. Es gibt „html“, „docx“ oder „pdf“ und tatsächlich noch einige andere Versionen, deren Erläuterung hier zu weit führen würde. In dem Beispiel wird auf eine docx-Datei als Vorlage („template“) verwiesen: Diese Textdatei bestimmt das „Design“, in das die markdown-Datei konvertiert wird. 
- - Die Literaturverwaltung läuft über `bibliography` (hier wird auf eine bib-Datei, also die Datenbank) verwiesen. 
- - Die *citation style language* (`csl`) – Datei definiert die Formatierung der Bibliographie (sowohl im Text als auch für das Literaturverzeichnis). csl-Dateien werden inzwischen für viele unterschiedliche Vorgaben zur Verfügung gestellt. Sie lassen sich im Style - Repositorium von Zotero finden^[Siehe <https://www.zotero.org/styles> (abgerufen 14.10.2015).]
+ - Die Literaturverwaltung läuft über `bibliography`: Hier wird auf eine bib-Datei, also die Literaturdatenbank, verwiesen. Mit *labels* aus dieser Datenbank wird auf die einzelnen Literaturhinweise verlinkt.
+ - Die *citation style language* (`csl`) – Datei definiert die Formatierung der Bibliographie (sowohl im Text als auch für das Literaturverzeichnis). csl-Dateien werden inzwischen für viele unterschiedliche Formatierungsvorgaben zur Verfügung gestellt. Sie lassen sich im Style - Repositorium von Zotero finden^[Siehe <https://www.zotero.org/styles> (abgerufen 14.10.2015).]
 
 Die Nützlichkeit dieser Art des ausführbaren Dokuments liegt aber nicht nur darin, einen Text zu formatieren, sondern v. a. darin, dass die Analyse innerhalb des gleichen Dokuments abgelegt werden kann.
 
@@ -74,18 +74,17 @@ In dem Beispiel hier ist die Datei vom Anfang in eine PDF verwandelt worden. TOD
 ### Umwandlungsprozess der qmd-Datei
 
 ![Umwandlungsprozess der QMD in das gewünschte Dokument, Abbildung von Allison Horst für Rstudio](./bilder/AllisonHorst_qmd_quarto_output.png){#fig-pandoc} 
+Das gewünschte Dokument ensteht dann erst „auf Knopdruck“ (siehe @fig-pandoc^[Illustration von Allison Horst, für Rstudio, zu finden auf <https://allisonhorst.com/> (abgerufen 14.10.2025).]: Als ersten Schritt werden die Code-Blöcke ausgeführt und die qmd – Datei mithilfe von jupyter (bei Python-Code) oder knitr (bei R-Code) in eine Markdown-Datei umgewandelt – dabei enstehen schon alle Grafiken, die jetzt in der md-Datei nur noch als Bilder eingebunden werden. Diese Markdown-Datei wird schließlich mithilfe von *pandoc* in das gewünschte Format transformiert, also PDF, word docx, html, oder ein anderes.
 
-Damit entsteht dieses Dokument „auf Knopdruck“ (siehe @fig-pandoc^[Illustration von Allison Horst, für Rstudio, zu finden auf <https://allisonhorst.com/> (abgerufen 14.10.2025).]: Als ersten Schritt werden die Code-Blöcke ausgeführt und die qmd – Datei mithilfe von jupyter (bei Python) oder knitr (bei R) in eine Markdown-Datei umgewandelt – dabei enstehen schon alle Grafiken, die jetzt in der md-Datei nur noch als Bilder eingebunden werden. Diese Markdown-Datei wird dann mithilfe von pandoc in das gewünschte Format transformiert, also PDF, word docx, html, oder ein anderes.
+Der Gestaltungsfreiraum ist sehr groß. Es lassen sich im YAML-header diverse Variablen setzen, für Bilder z. B. wo sie abgelegt oder mit wie viel DPI sie gespeichert werden. Für Bücher oder längere Arbeiten können in einem übergeordneten Dokument mehrere Kapitel als einzelne qmd-Dateien zusammengeführt werden. Über eine Programmierschleife lassen sich auch unterschiedlich parametrisierte Ausgaben berechnen, d. h. aus einem qmd-Dokument werden mehrere PDFs, in denen z. B. die zugrundeliegenden Datensätze anders gefiltert wurden. Damit können automatisch mehrere Berichte aus einer zugrundeliegenden Datei und Datensatz erstellt ewrden.
 
-Der Gestaltungsfreiraum ist sehr groß. Es lassen sich im YAML-header diverse Variablen setzen, für Bilder z. B. wo sie abgelegt oder mit wie viel DPI sie gespeichert werden. Mit einem übergeordneten Dokument lassen sich mehrere Kapitel als einzelne qmd-Dateien zusammenfassen und so ganze Bücher auf diese Weise schreiben. Über eine Schleife lassen sich auch unterschiedlich parametrisierte Ausgaben berechnen, d. h. aus einem qmd-Dokument werden mehrere PDFs, in denen zB die zugrundeliegenden Datensätze anders gefiltert wurden.
+Um auf die Reproduzierbarkeit zurückzukommen: Jeder, der dieses qmd-Dokument und nicht nur das fertig umgewandelte Dokument bekommt, kann damit nachvollziehen, welche Berechnungen genutzt wurden, um auf den besprochenen Wert zu kommen oder eine Grafik zu erstellen. Mithilfe der zugrundeliegenden Daten und diesem Dokument sollte er\*sie in der Lage sein, genau die gleichen Ergebnisse zu erzielen.
 
-Um auf die Reproduzierbarkeit zurückzukommen: Jeder, der dieses qmd-Dokument und nicht nur das fertig umgewandelte Dokument bekommt, sieht genau, welche Berechnungen genutzt wurden, um auf den besprochenen Wert zu kommen oder eine Grafik zu erstellen. Mithilfe der zugrundeliegenden Daten und dieses Dokuments sollte er\*sie in der Lage sein, genau die gleichen Ergebnisse zu erzielen.
-
-Apropos Daten: Diese sind bisher noch nicht besprochen worden. Um die Daten gemeinsam mit dem qmd-Dokument abzulegen, lohnt es sich ein Paket zu erstellen.
+Nun müssen aber diese Daten und ihre Ablage besprochen werden. Um die Daten gemeinsam mit dem qmd-Dokument abzulegen, lohnt es sich ein Paket zu erstellen.
 
 ### Pakete schnüren
 
-Ein Paket ist letztendlich ein Ordner mit Unterordnern für Rohdaten und bearbeiteten Dateien, Abbildungen, Grafiken und den zusätzlichen Dateien, die für die Umwandlung der qmd notwendig sind, wie die csl- und bib-Datei^[Siehe Beitrag Dirk Seidensticker in diesem Band.].
+Ein Paket ist letztendlich ein Ordner mit Unterordnern für Rohdaten und bearbeiteten Dateien, Abbildungen, Grafiken und den zusätzlichen Dateien, die für die Umwandlung der qmd notwendig sind, wie die csl- und bib-Datei^[Siehe Beitrag Dirk Seidensticker in diesem Band. TODO Seitenangaben.].
 
 Wenn ich innerhalb der qmd dann nur relative Pfade verwende, d. h. Pfade, die den Weg von der qmd-Datei zu der gewünschten Datei beschreiben und nicht von der Partition “home” oder “C” aus, dann ist mit der Übergabe des Pakets an jemand anderes oder den neuen Computer meines Zukunfts-Ich alles an einem Platz, um die Analyse erfolgreich nachzuholen.
 
