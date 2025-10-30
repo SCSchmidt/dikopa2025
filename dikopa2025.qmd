@@ -20,21 +20,23 @@ Eines dieser Probleme ist vom Prinzip nur „den Überblick zu behalten“. Dies
 
 Werden Daten so bereit gestellt, dass andere Forscher\*innen sie mit anderen Methoden bearbeiten können, können die Analysen robust werden und durch neue Ausgrabungen oder Datenerhebungen bestätigt werden. Neben der Nützlichkeit solch eines Vorgehens allgemein, können Fehlerquellen bei der Übernahme fremder Daten vermieden werden, neue Methoden schneller Verbreitung finden und auch besser von Kolleg\*innen überprüft werden. Damit führen Praktiken der offenen Wissenschaft zu einer Verschnellerung und Verbesserung von wissenschaftlichem Fortschritt [@touchon_2016; @schmidt_2020].
 
-Ein Lösungsansatz für das Problem der Bereitstellung von Analysecode und Daten basiert auf dem Prinzip des "ausführbaren Dokuments".
+Eine Möglichkeit die Methodik Kolleg\*innen zugänglich zu machen, ist die Publikation von skriptbasierten Abläufen in der quantitativen Forschung. Skripbasiert bedeutet, dass entweder die Analyse selbst in einer Programmier- oder Skriptsprache geschrieben wird, oder aber, wenn ein Graphical User Interface (GUI) genutzt wird, die Analyse als Code ausgegeben werden kann. Betrachtet man frühe GIS-basierte Forschungen, wurden solche Code-Blöcke mit Artikeln zusammen abgedruckt^[Auch heute noch manchmal siehe TODO Georgs letzter Artikel.]. Dies ist eine Möglichkeit, die jedoch in ihrer Nützlichkeit beschränkt ist: Nachnutzer\*innen müssen das Programm und die benötigten Pakete nachinstallieren und dann den Code abtippen oder über OCR-Verfahren umständlich in digitalen Text umwandeln. Zudem muss die Zuordnung einzelner Codeblöcke zu den jeweiligen Analyseergebnissen oder Grafiken, die im Text beschrieben werden, beschrieben werden.
+
+Einfacher ist es, den Analysecode und Daten mithilfe eines "ausführbaren Dokuments" zur Verfügung zu stellen. 
 
 ## Das ausführbare Dokument
 
-"Ausführbar" heißen diese Dokumente, da sie vom Prinzip wie ein kleines Programm/ein Skript agieren, nur dass dabei ein Artikel entsteht, der Text, Bilder und Bibliographie enthält. Man hält damit den Text, sowie den Code, den man für die Erstellung der Bilder braucht zusammen in einem Dokument vor.
+"Ausführbar" heißen Dokumente, die wie ein kleines Programm/ein Skript agieren, und dabei ein Artikel entsteht, der Text, Bilder und Bibliographie enthält. Man hält damit den Text, sowie den Code, den man für die Erstellung der Grafiken und Analyseergebnisse benötigt, zusammen in einem Dokument vor. Dies erleichtert die Auffindbarkeit und Zuordnung von Ergebnissen zu Code.
 
-Die Grundlage für diese ausführbaren Dokumente, auf die im Folgenden eingegangen werden sollen, sind
+Grundlagen für diese ausführbaren Dokumente, auf die im Folgenden eingegangen werden sollen, sind
 
 1. Markdown
 2. Quarto
 3. Code-Blöcke
-4. der Umwandlungsprozess
+4. der Umwandlungsprozess und
 5. Pakete .
 
-Diese werden erst im Prinzip vorgestellt und im Anschluss ein R-Paket beschrieben, dass die Erstellung dieser Dokumente und Pakete erleichtert.
+Diese werden im Folgenden vorgestellt und im Anschluss ein R-Paket beschrieben, dass die Erstellung ausführbarer Dokumente und Pakete erleichtert.
 
 ### Markdown
 
