@@ -44,7 +44,7 @@ Markdown (*md* abkgekürzt und als Dateiendung) ist die Grundlage für den Textt
 
 Zum Beispiel lassen sich Überschriften mit dem Rautensymbol markieren (hierarchisch gestaffelt - eine Raute # ist die höchste Ebene, ## zeichnet die Ebene darunter aus, ### die dritte Ebene), Listen mit einem einfach Minus-Symbol und Text über Sternchensymbole *kursiv* und **fett** drucken (siehe @fig-screenshot). Fußnoten, Bilder, Links, Rückverweise auf Überschriften (mithilfe von „Ankern“) genauso wie auf Bilder (über label) und Literaturverweise lassen sich ebenso einbinden. Damit entstehen Dokumente, die menschen- und maschinenlesbar sind.  
 
-Es gibt einen weiteren Vorteil: Das Versionskontrollsystem Git^[Siehe Maria Shinoto in diesem Band (TODO einfügen Seitenzahlen).] arbeitet in einem Markdown-basiertem Dokument zeilenbasiert, in einem Word-Dokument jedoch nur auf Ebene des gesamten Dokuments. Markdown-Dateien lassen sich damit kleinteiliger versionieren als word-Dokumente und Veränderungen zwischen Versionen sind leichter zu erfassen. 
+Es gibt einen weiteren Vorteil: Das Versionskontrollsystem Git^[Siehe Maria Shinoto in diesem Band.] arbeitet in einem Markdown-basiertem Dokument zeilenbasiert, in einem Word-Dokument jedoch nur auf Ebene des gesamten Dokuments. Markdown-Dateien lassen sich damit kleinteiliger versionieren als word-Dokumente und Veränderungen zwischen Versionen sind leichter zu erfassen. 
 
 Markdown kommt in unterschiedlichen Kontexten vor und damit in leicht unterschiedlichen „Geschmacksrichtungen“, die die Markdown-Syntax etwas erweitern oder abwandeln. Für das Schreiben wissenschaftlicher Dokumente hat sich inzwischen Quarto etabliert. 
 
@@ -83,7 +83,7 @@ Nun müssen aber diese Daten und ihre Ablage besprochen werden. Um die Daten gem
 
 ### Pakete schnüren
 
-Ein Paket ist nicht viel mehr als ein Ordner mit Unterordnern für Rohdaten und bearbeiteten Dateien, Abbildungen, Grafiken und den zusätzlichen Dateien, die für die Umwandlung der qmd notwendig sind, wie die csl- und bib-Datei^[Siehe Beitrag Dirk Seidensticker in diesem Band. TODO Seitenangaben.].
+Ein Paket ist nicht viel mehr als ein Ordner mit Unterordnern für Rohdaten und bearbeiteten Dateien, Abbildungen, Grafiken und den zusätzlichen Dateien, die für die Umwandlung der qmd notwendig sind, wie die csl- und bib-Datei^[Siehe Beitrag Dirk Seidensticker in diesem Band.].
 
 Wenn innerhalb der qmd dann nur relative Pfade verwendet werden, d. h. Pfade, die den Weg von der qmd-Datei zu der gewünschten Datei beschreiben und nicht von der Partition “home/” oder “C:” aus, dann ist mit der Übergabe des Pakets an jemand anderes oder der Übertragung auf einen neuen Computer alles an einem Platz, um die Analyse erfolgreich nachzuholen.
 
@@ -124,12 +124,3 @@ Die Ausführbarkeit des qmd-Dokumentes ermöglicht es Kolleg\*innen die durchgef
 Das R-Paket, welches diesen Text, die Bilder, csl- und bib-Dateien bereitstellt, befindet sich unter 
 
 ## Literaturverzeichnis
-
-<!--
-Vorgaben: 
-Umfang: ca. Abbildungen: 3–5 (druckfähige Qualität, mit Bildunterschriften und Rechteklärung) Zitierweise: DAI-Zitierstil (über Zotero verfügbar: Deutsches Archäologisches Institut) Abgabe: 1. Oktober 2025 Einreichung an: [gpantelidis\@klarch.tu-darmstadt.de](mailto:gpantelidis@klarch.tu-darmstadt.de) Formatierungsrichtlinien: Basierend auf den Vereinheitlichungen des ersten Bandes gelten für alle Beiträge folgende Vorgaben: Gendergerechte Sprache: Falls gendergerecht formuliert wird, dann bitte durchgängig mit \* gendern (z. B. Autor\*innen, Forscher\*innen).
-  
-Anführungszeichen: deutschtypisch: „Beispiel“
-
-Kursivierung: Bei Begriffsklärungen, Eigennamen, Softwaretiteln – aber nicht in Überschriften. URLs: ausschließlich in Fußnoten, nicht in den Fließtext oder die Bibliographie. Beispiel: [https://www.nano-editor.org](https://www.nano-editor.org/) \[zugegriffen am 15.01.2025\].
--->
