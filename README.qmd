@@ -1,6 +1,3 @@
----
-title: "README"
-format: html
----
+# readme
 
-Dies ist der verschriftliche Vortrag von der 2. Dikopa 2025, siehe <https://dikopa.net/2025/05/bericht-zweiter-workshop-des-dikopa-projekts/> (für Programm siehe auch den [Flyer](https://dikopa.net/wp-content/uploads/2025/05/Workshop-Digitale-Kompetenzen-in-der-Archaeologie_Programm.pdf)).
+Dies ist der verschriftliche Vortrag von der 2. DiKopA 2025, siehe <https://dikopa.net/2025/05/bericht-zweiter-workshop-des-dikopa-projekts/> (für Programm siehe auch den [Flyer](https://dikopa.net/wp-content/uploads/2025/05/Workshop-Digitale-Kompetenzen-in-der-Archaeologie_Programm.pdf)).
