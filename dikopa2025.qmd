@@ -121,6 +121,6 @@ Die Ausführbarkeit des qmd-Dokumentes ermöglicht es Kolleg\*innen die durchgef
 
 ![Stufen der Reproduzierbarkeit.](./bilder/Marwick_etal_2017_reproducibillity.png){#fig-reproducibility}
 
-Das R-Paket, welches diesen Text, die Bilder, csl- und bib-Dateien bereitstellt, befindet sich unter  [DOI: 10.5281/zenodo.17495645](https://doi.org/10.5281/zenodo.17495645). 
+Das R-Paket, welches diesen Text, die Bilder, csl- und bib-Dateien bereitstellt, befindet sich unter [DOI: 10.5281/zenodo.17495645](https://doi.org/10.5281/zenodo.17495645). 
 
 ## Literaturverzeichnis
