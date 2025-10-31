@@ -4,28 +4,27 @@ author: "Sophie C. Schmidt"
 format: docx
 csl: deutsches-archaologisches-institut.csl
 bibliography: dikopa2025.bib
----
-<!-- TODO: die Hochkommas mit regex austauschen --> 
 
-^[Dieser Beitrag ist gezielt in lockerem Tonfall gehalten, da es sich um eine Best-Practice - Anleitung ohne wissenschaftlichen Anspruch handelt.]
+lang: de
+---
 
 ## Einleitung
 
-Forschung ist ein langwieriger, iterativer Prozess, in dem mit unterschiedlichen Datentypen, Zwischenergebnissen, Textbausteinen, Code-Schnipseln, Grafiken und Quellen hantieren werden muss, ohne den Überblick zu verlieren. Aus diesen Einzelteilen werden Narrative geschmiedet, die in der Regel als Artikel oder Bücher veröffentlicht werden. Dabei ist die Offenlegung dieses wirren Prozesses mit der zunehmenden Quantifizierung und der Einbindung komplexerer computergestützter Methoden eher schwieriger geworden. Während die Forschenden in den 1960er und 70ern häufig noch rein visuell arbeiteten, ergo zum Nachvollziehen der Ergebnisbildung v. a. ein Katalog notwendig war, setzte in den 1970ern eine bis heute andauernde wissenschaftstheoretische Phase ein, die computergestützte Datenverarbeitung und statistische Methoden als modern und wissenschaftlich ansieht. Mit der zunehmenden Digitalisierung sind ganz neue Probleme verbunden,  Mit der zunehmenden Digitalisierung sind ganz neue Probleme verbunden, derer sich Forschende bewusst sein sollten.
+Forschung ist ein langwieriger, iterativer Prozess, in dem mit unterschiedlichen Datentypen, Zwischenergebnissen, Textbausteinen, Code-Schnipseln, Grafiken und Quellen hantieren werden muss, ohne den Überblick zu verlieren. Aus diesen Einzelteilen werden Narrative geschmiedet, die in der Regel als Artikel oder Bücher veröffentlicht werden. Dabei ist die Offenlegung dieses wirren Prozesses mit der zunehmenden Quantifizierung und der Einbindung komplexerer computergestützter Methoden eher schwieriger geworden. Während die Forschenden in den 1960er und 70ern häufig noch rein visuell arbeiteten, ergo zum Nachvollziehen der Ergebnisbildung v. a. ein Katalog notwendig war, setzte in den 1970ern eine bis heute andauernde wissenschaftstheoretische Phase ein, die computergestützte Datenverarbeitung und statistische Methoden als modern und wissenschaftlich ansieht. Mit der zunehmenden Digitalisierung sind ganz neue Probleme verbunden, derer sich Forschende bewusst sein sollten.
 
-Eines dieser Probleme ist vom Prinzip nur „den Überblick zu behalten“. Dieser Überblick sollte nicht nur während des Schreibprozesses des einen Artikels behalten werden, sondern wenn möglich auch noch nach mehreren Jahren herstellbar sein. Es gilt, möglichst reproduzierbar zu arbeiten, d. h., die Informationen so vorzuhalten, dass das zukünftige Selbst und andere Menschen mit den gleichen Daten und Methoden zum gleichen Ergebnis kommen (siehe @fig-rep ^[<https://book.the-turing-way.org/reproducible-research/overview/overview-definitions/> (zuletzt abgerufen 14.10.2015).]). Wenn Analysen reproduzierbar zur Verfügung stehen, sind die Wege zur Replizierbarkeit auch erleichtert – da die Methodik auf eine Art und Weise bereit gestellt wird, dass sie genau so mit anderen Daten nachvollzogen werden kann.
+Eines dieser Probleme ist vom Prinzip nur „den Überblick zu behalten“. Dieser Überblick sollte nicht nur während des Schreibprozesses des einen Artikels erhalten werden, sondern auch nach mehreren Jahren herstellbar sein. Es gilt, möglichst reproduzierbar zu arbeiten, d. h., die Informationen so vorzuhalten, dass das zukünftige Selbst und andere Menschen mit den gleichen Daten und Methoden zum gleichen Ergebnis kommen (siehe @fig-rep ^[<https://book.the-turing-way.org/reproducible-research/overview/overview-definitions/> (zuletzt abgerufen 14.10.2015).]). Wenn Analysen reproduzierbar zur Verfügung stehen, sind die Wege zur Replizierbarkeit auch erleichtert – da die Methodik auf eine Art und Weise bereit gestellt wird, dass sie genau so mit anderen Daten nachvollzogen werden kann.
 
-![Definitionen des Projekts „Turing Way“ für Reproduzierbarkeit, Replizierbarkeit](./bilder/reproducible-matrix.jpg){width=80% #fig-rep}
+![Definitionen des Projekts „Turing Way“ für reprdouzierbare, replizierbare, robuste und generalisierbare Analysen.](./bilder/reproducible-matrix.jpg){width=80% #fig-rep}
 
 Werden Daten so bereit gestellt, dass andere Forscher\*innen sie mit anderen Methoden bearbeiten können, können die Analysen robust werden und durch neue Ausgrabungen oder Datenerhebungen bestätigt werden. Neben der Nützlichkeit solch eines Vorgehens allgemein, können Fehlerquellen bei der Übernahme fremder Daten vermieden werden, neue Methoden schneller Verbreitung finden und auch besser von Kolleg\*innen überprüft werden. Damit führen Praktiken der offenen Wissenschaft zu einer Verschnellerung und Verbesserung von wissenschaftlichem Fortschritt [@touchon_2016; @marwick_2017].
 
-Eine Möglichkeit die Methodik Kolleg\*innen zugänglich zu machen, ist die Publikation von skriptbasierten Abläufen in der quantitativen Forschung. Skripbasiert bedeutet, dass entweder die Analyse selbst in einer Programmier- oder Skriptsprache geschrieben wird, oder aber, wenn ein Graphical User Interface (GUI) genutzt wird, die Analyse als Code ausgegeben werden kann. Betrachtet man frühe GIS-basierte Forschungen, wurden solche Code-Blöcke mit Artikeln zusammen abgedruckt^[Auch heute noch manchmal siehe TODO Georgs letzter Artikel.]. Dies ist eine Möglichkeit, die jedoch in ihrer Nützlichkeit beschränkt ist: Nachnutzer\*innen müssen das Programm und die benötigten Pakete nachinstallieren und dann den Code abtippen oder über OCR-Verfahren umständlich in digitalen Text umwandeln. Zudem muss die Zuordnung einzelner Codeblöcke zu den jeweiligen Analyseergebnissen oder Grafiken, die im Text beschrieben werden, beschrieben werden.
-TODO cite MArwick 2017 oder so
-Einfacher ist es, den Analysecode und Daten mithilfe eines "ausführbaren Dokuments" zur Verfügung zu stellen. 
+Eine Möglichkeit die Methodik Kolleg\*innen zugänglich zu machen, ist die Publikation von skriptbasierten Abläufen in der quantitativen Forschung. Skripbasiert bedeutet, dass entweder die Analyse selbst in einer Programmier- oder Skriptsprache geschrieben wird, oder aber, wenn ein *Graphical User Interface* (GUI) genutzt wird, die Analyse als Code ausgegeben werden kann. Eine Möglichkeit ist, Code-Blöcke mit Artikeln zusammen abzudrucken [siehe z. B. @roth_2025]. Das ist hilfreich, jedoch in seiner Nützlichkeit beschränkt: Nachnutzer\*innen müssen nicht nur das Programm und die benötigten Pakete nachinstallieren, sondern auch zusätzlich den Code abtippen oder über OCR-Verfahren umständlich in digitalen Text umwandeln. Zudem muss die Zuordnung einzelner Codeblöcke zu den jeweiligen Analyseergebnissen oder Grafiken, die im Text beschrieben werden, beschrieben werden.
+
+Einfacher ist es, den Analysecode und Daten mithilfe eines „ausführbaren Dokuments “ zur Verfügung zu stellen. Der hier vorgestellte Ansatz basiert zum Großteil auf Arbeiten von Ben Marwick und Kolleg\*innen, die die Reproduzierbarkeitsdebatte aus anderen Fächern in die Archäologie getragen haben, und sich mit unterschiedlichen Artikeln für Offene Methoden einsetzen [@marwick_2017; @marwick_2018; @marwick_2018-1]. 
 
 ## Das ausführbare Dokument
 
-"Ausführbar" heißen Dokumente, die wie ein kleines Programm/ein Skript agieren, und dabei ein Artikel entsteht, der Text, Bilder und Bibliographie enthält. Man hält damit den Text, sowie den Code, den man für die Erstellung der Grafiken und Analyseergebnisse benötigt, zusammen in einem Dokument vor. Dies erleichtert die Auffindbarkeit und Zuordnung von Ergebnissen zu Code.
+„Ausführbar “ heißen Dokumente, die wie ein kleines Programm/ein Skript agieren, und dabei ein Artikel entsteht, der Text, Bilder und Bibliographie enthält. Man hält damit den Text, sowie den Code, den man für die Erstellung der Grafiken und Analyseergebnisse benötigt, zusammen in einem Dokument vor. Dies erleichtert die Auffindbarkeit und Zuordnung von Ergebnissen zu Code.
 
 Grundlagen für diese ausführbaren Dokumente, auf die im Folgenden eingegangen werden sollen, sind
 
@@ -41,9 +40,9 @@ Diese werden im Folgenden vorgestellt und im Anschluss ein R-Paket beschrieben, 
 
 Markdown (*md* abkgekürzt und als Dateiendung) ist die Grundlage für den Textteil des Dokuments. Es handelt sich um eine Auszeichnungssprache, die von John Gruber 2004 entwickelt wurde: In dem in einer simplen Textdatei einer bestimmten Syntax gefolgt wird, kann die Datei von einem Programm im Hintergrund in formatierte Dateien (z. B. Word, html, pptx oder PDF) umgewandelt werden.
 
-![Beispiel für die Syntax von Markdown in einem Quarto-Dokument](./bilder/Screenshot_qmd-docx.png){#fig-screenshot}
+![Beispiel für die Syntax von Markdown in einem Quarto-Dokument und der ausgeführten Datei.](./bilder/Screenshot_qmd-docx_2.png){#fig-screenshot}
 
-Zum Beispiel lassen sich Überschriften mit dem Rautensymbol markieren (hierarchisch gestaffelt - eine Raute # ist die höchste Ebene, ## zeichnet die Ebene darunter aus, ### die dritte Ebene), Listen mit einem einfach Minus-Symbol und Text über Sternchensymbole *kursiv* und **fett** drucken (siehe @fig-screenshot). Fußnoten, Bilder, Links, Rückverweise auf Überschriften (mithilfe von "Ankern") genauso wie auf Bilder (über label) und Literaturverweise lassen sich ebenso einbinden. Damit entstehen Dokumente, die menschen- und maschinenlesbar sind.  
+Zum Beispiel lassen sich Überschriften mit dem Rautensymbol markieren (hierarchisch gestaffelt - eine Raute # ist die höchste Ebene, ## zeichnet die Ebene darunter aus, ### die dritte Ebene), Listen mit einem einfach Minus-Symbol und Text über Sternchensymbole *kursiv* und **fett** drucken (siehe @fig-screenshot). Fußnoten, Bilder, Links, Rückverweise auf Überschriften (mithilfe von „Ankern“) genauso wie auf Bilder (über label) und Literaturverweise lassen sich ebenso einbinden. Damit entstehen Dokumente, die menschen- und maschinenlesbar sind.  
 
 Es gibt einen weiteren Vorteil: Das Versionskontrollsystem Git^[Siehe Maria Shinoto in diesem Band (TODO einfügen Seitenzahlen).] arbeitet in einem Markdown-basiertem Dokument zeilenbasiert, in einem Word-Dokument jedoch nur auf Ebene des gesamten Dokuments. Markdown-Dateien lassen sich damit kleinteiliger versionieren als word-Dokumente und Veränderungen zwischen Versionen sind leichter zu erfassen. 
 
@@ -68,12 +67,13 @@ Die Grafik kann eine Bildunterschrift erhalten und ein *label*, welches genutzt 
 
 Der Vorteil liegt auf der Hand: Sollte sich etwas in der Datenbasis oder der Analyse verändern, können die berechneten Werte und Grafiken innerhalb des Textes automatisch angepasst werden. Auch dies reduziert eine Fehlerquelle. Zudem ist dies genau der Teil, der Kolleg\*innen eventuell besonders interessiert: Wie genau die Analyse berechnet wurde kann mithilfe dieses Dokuments geteilt werden und benötigt weniger erklärende Worte als eine Analyse ohne publizierten Code. 
 
-In dem Beispiel hier ist die Datei vom Anfang in eine PDF verwandelt worden. TODO check
+In dem Beispiel @fig-screenshot ist die Datei in eine Word-Datei verwandelt worden.
 
 ### Umwandlungsprozess der qmd-Datei
 
-![Umwandlungsprozess der QMD in das gewünschte Dokument, Abbildung von Allison Horst für Rstudio](./bilder/AllisonHorst_qmd_quarto_output.png){#fig-pandoc} 
-Das gewünschte Dokument ensteht dann erst „auf Knopdruck“ (siehe @fig-pandoc^[Illustration von Allison Horst, für Rstudio, zu finden auf <https://allisonhorst.com/> (abgerufen 14.10.2025).]: Als ersten Schritt werden die Code-Blöcke ausgeführt und die qmd – Datei mithilfe von jupyter (bei Python-Code) oder knitr (bei R-Code) in eine Markdown-Datei umgewandelt – dabei enstehen schon alle Grafiken, die jetzt in der md-Datei nur noch als Bilder eingebunden werden. Diese Markdown-Datei wird schließlich mithilfe von *pandoc* in das gewünschte Format transformiert, also PDF, word docx, html, oder ein anderes.
+Das gewünschte Dokument ensteht dann erst „auf Knopdruck“ bzw. Eingabeaufforderung: Als ersten Schritt werden die Code-Blöcke ausgeführt und die qmd – Datei mithilfe von jupyter (bei Python-Code) oder knitr (bei R-Code) in eine Markdown-Datei umgewandelt – dabei enstehen schon alle Grafiken, die jetzt in der md-Datei nur noch als Bilder eingebunden werden. Diese Markdown-Datei wird schließlich mithilfe von *pandoc* in das gewünschte Format transformiert, also PDF, word docx, html, oder ein anderes.  (siehe @fig-pandoc^[Illustration von Allison Horst, für Rstudio, zu finden auf <https://allisonhorst.com/> (abgerufen 14.10.2025).]
+
+![Umwandlungsprozess der QMD in das gewünschte Dokument, Abbildung von Allison Horst für Rstudio](./bilder/AllisonHorst_qmd_quarto_output.png){#fig-pandoc}
 
 Der Gestaltungsfreiraum ist sehr groß. Es lassen sich im YAML-header diverse Variablen setzen, für Bilder z. B. wo sie abgelegt oder mit wie viel DPI sie gespeichert werden. Für Bücher oder längere Arbeiten können in einem übergeordneten Dokument mehrere Kapitel als einzelne qmd-Dateien zusammengeführt werden. Über eine Programmierschleife lassen sich auch unterschiedlich parametrisierte Ausgaben berechnen, d. h. aus einem qmd-Dokument werden mehrere PDFs, in denen z. B. die zugrundeliegenden Datensätze anders gefiltert wurden. Damit können automatisch mehrere Berichte aus einer zugrundeliegenden Datei und Datensatz erstellt ewrden.
 
@@ -111,17 +111,19 @@ Die Kernfunktion, die die Ordnerstruktur aufbaut, ist `use_analysis`. Hiermit we
 
 ### Lizenzieren
 
-Die letzte Funktion, die hier noch erwähnt sein soll, ist `use_mit_licence`. Wenn Material online geteilt wird, ist die Lizenzierung wichtig, die klärt, wie die geteilten Sachen zitiert werden müssen, aber auch, wie sie genutzt werden dürfen (TODO Marwick und Birch?). Als Vorlage ist hier die MIT-Lizenz eingestellt, da die einerseits sehr permissiv ist, andererseits keine Haftung für eventuell fehlerhaften Code übernommen wird.
+Die letzte Funktion, die hier noch erwähnt sein soll, ist `use_mit_licence`. Wenn Material online geteilt wird, ist die Lizenzierung wichtig, die klärt, wie die geteilten Sachen zitiert werden müssen, aber auch, wie sie genutzt werden dürfen [@marwick_2018-1, Abb.6]. Als Vorlage ist hier die MIT-Lizenz eingestellt, da die einerseits sehr permissiv ist, andererseits keine Haftung für eventuell fehlerhaften Code übernommen wird.
 
 ## Zusammenfassung
 
-So entsteht ein Paket, das den Code und Text zusammenhält und alle notwendigen Dateien in einer sinnvollen Struktur ablegt. Die Nutzung von git ermöglicht eine Versionskontrolle, die Anleitung für das Anlegen von Metadaten und der Lizenz sowie dem Abhängigkeitsmanagement ein gut mit anderen teilbares Paket, das so zur Verfügung gestellt werden kann.
+So entsteht ein Paket, das den Code und Text zusammenhält und alle notwendigen Dateien in einer sinnvollen Struktur ablegt. Die Nutzung von git ermöglicht eine Versionskontrolle, die Anleitung für das Anlegen von Metadaten und der Lizenz sowie dem Abhängigkeitsmanagement ein gut mit anderen teilbares Paket, das auf unterschiedliche Art und Weisen zur Verfügung gestellt werden kann. Zu empfehlen ist es, das Paket in einem vertrauenswürdigen Repositorium abzulegen, und die dort generierte persistente URL des Pakets in dem Artikel, der veröffentlicht wird, mit abzudrucken. Es ist nicht nachhaltig, das Paket nur auf eigenen Webseiten, Github^[Wenn das Repositorium auf Github liegt, ist es sehr leicht als Version nach Zenodo zu veröffentlichen: <https://docs.github.com/de/repositories/archiving-a-github-repository/referencing-and-citing-content> (abgerufen 31.10.2025).], academia oder researchgate hochzuladen, da diese Anbieter keine dauerhafte Bereitstellung garantieren. Geeignet sind Repositorien wie [Zenodo.org](https://zenodo.org), [Open Science Framework (OSF)](https://osf.io) oder Repositorien von Universitäten, die eine persistente Ablage versichern.
 
-Die Ausführbarkeit des qmd-Dokumentes ermöglicht es Kolleg\*innen die durchgeführten Analysen relativ schnell und einfach nachzuvollziehen. Darin steckt ein großes Potenzial für eine offene und reproduzierbare Wissenschaft (siehe @fig-reproducibility)
+Die Ausführbarkeit des qmd-Dokumentes ermöglicht es Kolleg\*innen die durchgeführten Analysen relativ schnell und einfach nachzuvollziehen. Darin steckt ein großes Potenzial für eine offene und reproduzierbare Wissenschaft (siehe @fig-reproducibility^[@marwick_2017, Abb.1]). 
 
-![Stufen der Reproduzierbarkeit [@marwick_2017, Abb.1].](./bilder/Marwick_etal_2017_reproducibillity.png){#fig-reproducibility}
+![Stufen der Reproduzierbarkeit.](./bilder/Marwick_etal_2017_reproducibillity.png){#fig-reproducibility}
 
-Das R-Paket, welches diesen Text, die Bilder, csl- und bib-Dateien bereitstellt, befindet sich unter TODO zenodo doi erstellen
+Das R-Paket, welches diesen Text, die Bilder, csl- und bib-Dateien bereitstellt, befindet sich unter 
+
+## Literaturverzeichnis
 
 <!--
 Vorgaben: 
