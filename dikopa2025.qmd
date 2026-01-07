@@ -1,5 +1,5 @@
 ---
-title: "Den Überblick behalten - Organisation von Daten, Analysecode und Text in Paketen"
+title: "Den Überblick behalten -- Organisation von Daten, Analysecode und Text in Paketen"
 author: "Sophie C. Schmidt"
 format: docx
 csl: deutsches-archaologisches-institut.csl
@@ -20,7 +20,7 @@ Werden Daten so bereit gestellt, dass andere Forscher\*innen sie mit anderen Met
 
 Eine Möglichkeit die Methodik Kolleg\*innen zugänglich zu machen, ist die Publikation von skriptbasierten Abläufen in der quantitativen Forschung. Skripbasiert bedeutet, dass entweder die Analyse selbst in einer Programmier- oder Skriptsprache geschrieben wird, oder aber, wenn ein *Graphical User Interface* (GUI) genutzt wird, die Analyse als Code ausgegeben werden kann. Eine Möglichkeit ist, Code-Blöcke mit Artikeln zusammen abzudrucken [siehe z. B. @roth_2025]. Das ist hilfreich, jedoch in seiner Nützlichkeit beschränkt: Nachnutzer\*innen müssen nicht nur das Programm und die benötigten Pakete nachinstallieren, sondern auch zusätzlich den Code abtippen oder über OCR-Verfahren umständlich in digitalen Text umwandeln. Zudem muss die Zuordnung einzelner Codeblöcke zu den jeweiligen Analyseergebnissen oder Grafiken dargelegt werden.
 
-Einfacher ist es, den Analysecode und Daten mithilfe eines „ausführbaren Dokuments “ zur Verfügung zu stellen. Der hier vorgestellte Ansatz basiert zum Großteil auf Arbeiten von Ben Marwick und Kolleg\*innen, die die Reproduzierbarkeitsdebatte aus anderen Fächern in die Archäologie getragen haben, und sich mit unterschiedlichen Artikeln für offene Methoden einsetzen [@marwick_2017; @marwick_2018; @marwick_2018-1]. 
+Einfacher ist es, den Analysecode und Daten mithilfe eines „ausführbaren Dokuments“ zur Verfügung zu stellen. Der hier vorgestellte Ansatz basiert zum Großteil auf Arbeiten von Ben Marwick und Kolleg\*innen, die die Reproduzierbarkeitsdebatte aus anderen Fächern in die Archäologie getragen haben, und sich mit unterschiedlichen Artikeln für offene Methoden einsetzen [@marwick_2017; @marwick_2018; @marwick_2018-1]. 
 
 ## Das ausführbare Dokument
 
@@ -40,10 +40,9 @@ Diese werden im Folgenden vorgestellt und im Anschluss ein R-Paket beschrieben, 
 
 Markdown (*md* abgekürzt und als Dateiendung) ist die Grundlage für den Textteil des Dokuments. Es handelt sich um eine Auszeichnungssprache, die von John Gruber 2004 entwickelt wurde: Indem in einer simplen Textdatei einer bestimmten Syntax gefolgt wird, kann die Datei von einem Programm im Hintergrund in formatierte Dateien (z. B. Word, html, pptx oder PDF) umgewandelt werden.
 
-![Beispiel für die Syntax von Markdown in einem Quarto-Dokument und der ausgeführten Datei. CC BY 4.0 Authorin](./bilder/Screenshot_qmd-docx_2.png){#fig-screenshot}
+![Beispiel für die Syntax von Markdown in einem Quarto-Dokument und der ausgeführten Datei. CC BY 4.0 Autorin](./bilder/Screenshot_qmd-docx_2.png){#fig-screenshot}
 
-Zum Beispiel lassen sich Überschriften mit dem Rautensymbol markieren (hierarchisch gestaffelt - eine Raute # ist die höchste Ebene, ## zeichnet die Ebene darunter aus, ### die dritte Ebene), Listen mit einem einfach Minus-Symbol und Text über Sternchensymbole *kursiv* und **fett** drucken (siehe @fig-screenshot). Fußnoten, Bilder, Links, Rückverweise auf Überschriften (mithilfe von „Ankern“) genauso wie auf Bilder (über label) und Literaturverweise lassen sich ebenso einbinden. Damit entstehen Dokumente, die menschen- und maschinenlesbar sind.  
-<!-- TODO cheat sheet verlinken -->
+Zum Beispiel lassen sich Überschriften mit dem Rautensymbol markieren (hierarchisch gestaffelt - eine Raute # ist die höchste Ebene, ## zeichnet die Ebene darunter aus, ### die dritte Ebene), Listen mit einem einfach Minus-Symbol und Text über Sternchensymbole *kursiv* und **fett** drucken (siehe @fig-screenshot). Fußnoten, Bilder, Links, Rückverweise auf Überschriften (mithilfe von „Ankern“) genauso wie auf Bilder (über label) und Literaturverweise lassen sich ebenso einbinden^[Siehe z. B. <https://www.markdownguide.org/cheat-sheet/> oder <https://rstudio.github.io/cheatsheets/quarto.pdf>]. Damit entstehen Dokumente, die menschen- und maschinenlesbar sind.  
 
 Es gibt einen weiteren Vorteil: Das Versionskontrollsystem Git^[Siehe Maria Shinoto in diesem Band.] arbeitet in einem Markdown-basierten Dokument zeilenbasiert, in einem Word-Dokument jedoch nur auf Ebene des gesamten Dokuments. Markdown-Dateien lassen sich damit kleinteiliger versionieren als word-Dokumente und Veränderungen zwischen Versionen sind leichter zu erfassen. 
 
@@ -73,15 +72,14 @@ In dem Beispiel @fig-screenshot ist die Datei in eine Word-Datei verwandelt word
 ### Umwandlungsprozess der qmd-Datei
 
 Das gewünschte Dokument ensteht dann erst „auf Knopdruck“ bzw. Eingabeaufforderung: Als ersten Schritt werden die Code-Blöcke ausgeführt und die qmd–Datei mithilfe von jupyter (bei Python-Code) oder knitr (bei R-Code) in eine Markdown-Datei umgewandelt – dabei enstehen schon alle Grafiken, die jetzt in der md-Datei nur noch als Bilder eingebunden werden. Diese Markdown-Datei wird schließlich mithilfe von *pandoc* in das gewünschte Format transformiert, also PDF, word docx, html, oder ein anderes (siehe @fig-pandoc ^[Illustration von Allison Horst, für Rstudio, zu finden auf <https://allisonhorst.com/> (abgerufen 14.10.2025).].
-<!-- Lizenzanagabe --> 
 
 ![Umwandlungsprozess der QMD in das gewünschte Dokument, Abbildung CC BY 4.0 von Allison Horst für Rstudio](./bilder/AllisonHorst_qmd_quarto_output.png){#fig-pandoc}
 
-Der Gestaltungsfreiraum ist sehr groß. Es lassen sich im YAML-header diverse Variablen setzen, für Bilder z. B. wo sie abgelegt oder mit wie viel DPI sie gespeichert werden. Für Bücher oder längere Arbeiten können in einem übergeordneten Dokument mehrere Kapitel als einzelne qmd-Dateien zusammengeführt werden. Über eine Programmierschleife lassen sich auch unterschiedlich parametrisierte Ausgaben berechnen, d. h. aus einem qmd-Dokument werden mehrere PDFs, in denen z. B. die zugrundeliegenden Datensätze anders gefiltert wurden. Damit können automatisch mehrere Berichte aus einer zugrundeliegenden Datei und Datensatz erstellt werden.
+Der Gestaltungsfreiraum ist sehr groß. Es lassen sich im YAML-header diverse Variablen setzen, für Bilder z. B. wo sie abgelegt oder mit wie viel DPI sie gespeichert werden. Für Bücher oder längere Arbeiten können in einem übergeordneten Dokument mehrere Kapitel als einzelne qmd-Dateien zusammengeführt werden. Über eine Programmierschleife lassen sich auch unterschiedlich parametrisierte Ausgaben berechnen, d. h. aus einem qmd-Dokument werden mehrere PDFs, in denen z. B. die zugrundeliegenden Datensätze anders gefiltert wurden. Damit können automatisch mehrere Berichte aus einem Dokument und einem Datensatz erstellt werden.
 
 Um auf die Reproduzierbarkeit zurückzukommen: Jeder, der dieses qmd-Dokument und nicht nur das fertig umgewandelte Dokument bekommt, kann damit nachvollziehen, welche Berechnungen genutzt wurden, um auf den besprochenen Wert zu kommen oder eine Grafik zu erstellen. Mithilfe der zugrundeliegenden Daten und dieses Dokuments sollte er\*sie in der Lage sein, genau die gleichen Ergebnisse zu erzielen.
 
-Nun müssen aber diese Daten und ihre Ablage besprochen werden. Um die Daten gemeinsam mit dem qmd-Dokument abzulegen, lohnt es sich ein Paket zu erstellen.
+Nun müssen aber diese Daten und ihre Ablage besprochen werden. Um die Daten gemeinsam mit dem qmd-Dokument abzulegen, lohnt es sich, ein Paket zu erstellen.
 
 ### Pakete schnüren
 
@@ -89,27 +87,27 @@ Ein Paket ist nicht viel mehr als ein Ordner mit Unterordnern für Rohdaten und 
 
 Wenn innerhalb der qmd dann nur relative Pfade verwendet werden, d. h. Pfade, die den Weg von der qmd-Datei zu der gewünschten Datei beschreiben und nicht von der Partition “home/” oder “C:” aus, dann ist mit der Übergabe des Pakets an jemand anderes oder der Übertragung auf einen neuen Computer alles an einem Platz, um die Analyse erfolgreich nachzuholen.
 
-Um diesen Prozess für R-Nutzer zu vereinfachen und zu automatisieren, haben Ben Marwick und Kolleg\*innen das rrtools-Paket^[*rr* für *reproducible research*, <https://github.com/benmarwick/rrtools>.] entwickelt [@schmidt_2020], das die Nutzer\*innen mit vier zentralen Funktionen durch die Entwicklung eines Pakets für reproduzierbare Analysen führt. Ein R-Paket ist letztendlich eine kleine Erweiterung der grundlegenden Funktionalitäten der Skriptsprache R [@r_core_team_2023]. Es gibt sehr viele diese Erweiterungen, die über das *Comprehensive R Archive Network* (CRAN^[<https://cran.r-project.org/> (abgerufen 14.10.2025).]) oder häufig auch Github bereitgestellt werden. Diese Pakete sind immer in einer bestimmten Art und Weise aufgebaut, um problemlos von anderen Nutzer\*innen installiert werden zu können.
+Um diesen Prozess für R-Nutzer\*innen zu vereinfachen und zu automatisieren, haben Ben Marwick und Kolleg\*innen das rrtools-Paket^[*rr* für *reproducible research*, <https://github.com/benmarwick/rrtools>.] entwickelt [@schmidt_2020], das die Nutzer\*innen mit vier zentralen Funktionen durch die Entwicklung eines Pakets für reproduzierbare Analysen führt. Ein R-Paket ist letztendlich eine kleine Erweiterung der grundlegenden Funktionalitäten der Skriptsprache R [@r_core_team_2023]. Es gibt sehr viele dieser Erweiterungen, die über das *Comprehensive R Archive Network* (CRAN^[<https://cran.r-project.org/> (abgerufen 14.10.2025).]), häufig auch über Github oder andere Plattformen, bereitgestellt werden. Diese Pakete sind immer in einer bestimmten Art und Weise aufgebaut, um problemlos von anderen Nutzer\*innen installiert werden zu können.
 
 ## Das R-Paket rrtools
 
 Indem die Funktionen in `rrtools`, die im Folgenden erklärt werden, den Vorgaben für die Entwicklung von R-Paketen folgen, ist das entstehende Paket bei anderen Nutzer\*innen installierbar. Damit können sie die für das Paket oder die Analyse entwickelten Funktionen nutzen und das Abhängigkeitsmanagement sollte geklärt sein. Abhängigkeitsmanagement bedeutet, dass, wenn in einem Paket auf andere Erweiterungen (Pakete) zurückgegriffen wird, diese deklariert und ebenfalls installiert werden müssen.
 
-`rrtools` bietet auch das automatische Erstellen einer MIT-Lizenz an. Es ist vorgesehen, dass das Paket mit git versioniert und über Github synchronisiert wird. Es führt den Nutzer durch die Erstellung einer Docker und einer `renv`-Umgebung. Darauf wird hier nicht im Detail eingegangen, es dient dem Abspeichern der jeweils genutzten Paketversion von importierten Paketen, damit der Code auch nach Updates oder auf fremden Systemen mit anderen Paketversionen läuft.
+`rrtools` bietet auch das automatische Erstellen einer MIT-Lizenz an. Es ist vorgesehen, dass das Paket mit git versioniert und über Github synchronisiert wird. Es führt den Nutzer durch die Erstellung einer Docker und einer `renv`-Umgebung. Darauf wird hier nicht im Detail eingegangen. Es dient dem Abspeichern der jeweils genutzten Paketversion von importierten Paketen, damit der Code auch nach Updates oder auf fremden Systemen mit anderen Paketversionen läuft.
 
 Hier wird kurz die Funktionsweise erklärt:
 
-### Erstellung Paket
+### Erstellung des Pakets
 
 Mit der grundlegenden Funktion `use_compendium` wird ein Paket angelegt. Rstudio öffnet ein neues Fenster, in dem erklärt wird, was diese Funktion gerade geleistet hat: Es hat Dokumente erstellt, wie die `DESCRIPTION`-Datei, welche das Paket definiert, eine `NAMESPACE`-Datei, die `Rproj`-Datei und noch einige mehr. Als letztes erklärt es dann “Next, you need to do” und führt damit durch die Funktionsweise der einzelnen Dateien und notwendigen Schritte.
 
-### Readme-Erstellung
+### Readme
 
 Unter anderem wird der/die Benutzer\*in aufgefordert mit `use_readme_qmd`, eine README und andere Dateien als Vorlagen zu erstellen, die dann noch modifiziert werden sollen. Eine README^[*read me* - Die Aufforderung, diese Datei als erstes zu lesen, steckt im Namen.] ist bei Github und anderen Systemen die erste Datei die angezeigt wird und allgemein darüber informiert, wofür dieser Ordner da ist und welche Dateien sich in ihm befinden.
 
 ### Ordnerstruktur
 
-Die Kernfunktion, die die Ordnerstruktur aufbaut, ist `use_analysis`. Hiermit werden die Ordner und Vorlagen angelegt, die für ein Projekt genutzt werden können. Auch hier führen Hinweise, was als nächstes getan werden sollte durch das Vorgehen. Es gibt auch einen Warnhinweis, dass die Daten automatisch mit git versioniert werden. Wenn man also nicht möchte, dass Daten auch in Github hochgeladen werden, müsste der data-Ordner zum *gitignore* hinzugefügt werden. Gitignore ist eine einfache Textdatei, in der aufgelistet wird, welche Dateien in dem durch git versionierten Ordner NICHT mit git verfolgt werden sollen.
+Die Kernfunktion, die die Ordnerstruktur aufbaut, ist `use_analysis`. Hiermit werden die Ordner und Vorlagen angelegt, die für ein Projekt genutzt werden können. Auch hier führen Hinweise, was als nächstes getan werden sollte durch das Vorgehen. Es gibt zudem einen Warnhinweis, dass die Daten automatisch mit git versioniert werden. Wenn man also nicht möchte, dass auch Daten in Github hochgeladen werden, müsste der data-Ordner zum *gitignore* hinzugefügt werden. Gitignore ist eine einfache Textdatei, in der aufgelistet wird, welche Dateien in dem durch git versionierten Ordner NICHT mit git verfolgt werden sollen.
 
 ### Lizenzieren
 
@@ -119,10 +117,9 @@ Die letzte Funktion, die hier noch erwähnt sein soll, ist `use_mit_licence`. We
 
 So entsteht ein Paket, das den Code und Text zusammenhält und alle notwendigen Dateien in einer sinnvollen Struktur ablegt. Die Nutzung von git ermöglicht eine Versionskontrolle, die Anleitung für das Anlegen von Metadaten und der Lizenz sowie dem Abhängigkeitsmanagement ein gut mit anderen teilbares Paket, das auf unterschiedliche Arten und Weisen zur Verfügung gestellt werden kann. Zu empfehlen ist es, das Paket in einem vertrauenswürdigen Repositorium abzulegen, und die dort generierte persistente URL des Pakets in dem Artikel, der veröffentlicht wird, mit abzudrucken. Es ist nicht nachhaltig, das Paket nur auf eigenen Webseiten, Github^[Wenn das Repositorium auf Github liegt, ist es sehr leicht als Version nach Zenodo zu veröffentlichen: <https://docs.github.com/de/repositories/archiving-a-github-repository/referencing-and-citing-content> (abgerufen 31.10.2025).], academia oder researchgate hochzuladen, da diese Anbieter keine dauerhafte Bereitstellung garantieren. Geeignet sind Repositorien wie [Zenodo.org](https://zenodo.org), [Open Science Framework (OSF)](https://osf.io) oder Repositorien von Universitäten, die eine persistente Ablage versichern.
 
-Die Ausführbarkeit des qmd-Dokumentes ermöglicht es Kolleg\*innen die durchgeführten Analysen relativ schnell und einfach nachzuvollziehen. Darin steckt ein großes Potenzial für eine offene und reproduzierbare Wissenschaft (siehe @fig-reproducibility^[@marwick_2017, Abb.1]). 
+Die Ausführbarkeit des qmd-Dokumentes ermöglicht es Kolleg\*innen die durchgeführten Analysen relativ schnell und einfach nachzuvollziehen. Darin steckt ein großes Potenzial für eine offene und reproduzierbare Wissenschaft (siehe @fig-reproducibility). 
 
-![Stufen der Reproduzierbarkeit @marwick_2017](./bilder/Marwick_etal_2017_reproducibillity.png){#fig-reproducibility}
-<!-- Ben scheint da jemanden zu zitieren -> CHECK DAS wegen Lizenz, vllt eine andere Visualisierung nehmen--> 
+![Stufen der Reproduzierbarkeit (CC BY Ben Marwick u. a. 2017)](./bilder/Marwick_etal_2017_Fig 2_rep_res_spectrum.png){#fig-reproducibility}
 
 Das R-Paket, welches diesen Text, die Bilder, csl- und bib-Dateien bereitstellt, befindet sich unter [DOI: 10.5281/zenodo.17495645](https://doi.org/10.5281/zenodo.17495645). 
 
